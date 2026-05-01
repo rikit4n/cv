@@ -63,6 +63,10 @@
             <span class="lang-id">Buka Menu</span>
             <span class="lang-en">Unlock Menu</span>
           </button>
+          <button class="button button-secondary access-close" type="button">
+            <span class="lang-id">Close</span>
+            <span class="lang-en">Close</span>
+          </button>
           <p class="access-error" hidden>
             <span class="lang-id">Password belum sesuai.</span>
             <span class="lang-en">The password is not correct yet.</span>
@@ -76,6 +80,7 @@
     const form = gate.querySelector(".access-form");
     const input = gate.querySelector(".access-input");
     const error = gate.querySelector(".access-error");
+    const closeButton = gate.querySelector(".access-close");
 
     form.addEventListener("submit", function (event) {
       event.preventDefault();
@@ -91,6 +96,15 @@
       error.hidden = false;
       input.focus();
       input.select();
+    });
+
+    closeButton.addEventListener("click", function () {
+      if (window.history.length > 1) {
+        window.history.back();
+        return;
+      }
+
+      window.location.href = "index.html";
     });
 
     input.focus();
