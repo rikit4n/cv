@@ -756,6 +756,7 @@ tbody tr:last-child td {
 }
 
 .access-card {
+  position: relative;
   width: min(100%, 460px);
   padding: 32px;
   border-radius: var(--radius-xl);
@@ -781,6 +782,28 @@ tbody tr:last-child td {
   margin-top: 22px;
 }
 
+.access-dismiss {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  width: 42px;
+  height: 42px;
+  display: grid;
+  place-items: center;
+  border: 0;
+  border-radius: 999px;
+  background: rgba(242, 107, 29, 0.12);
+  color: var(--orange-deep);
+  font: inherit;
+  font-size: 1.4rem;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.access-dismiss:hover {
+  background: rgba(242, 107, 29, 0.2);
+}
+
 .access-label {
   font-size: 0.9rem;
   font-weight: 700;
@@ -804,6 +827,14 @@ tbody tr:last-child td {
 }
 
 .access-button {
+  width: 100%;
+}
+
+.access-close {
+  width: 100%;
+}
+
+.access-close {
   width: 100%;
 }
 

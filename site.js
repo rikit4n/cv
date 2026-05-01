@@ -41,6 +41,7 @@
     gate.className = "access-gate";
     gate.innerHTML = `
       <div class="access-card" role="dialog" aria-modal="true" aria-labelledby="access-title">
+        <button class="access-dismiss" type="button" aria-label="Close access dialog">×</button>
         <span class="eyebrow">
           <span class="lang-id">Akses Menu</span>
           <span class="lang-en">Menu Access</span>
@@ -64,8 +65,8 @@
             <span class="lang-en">Unlock Menu</span>
           </button>
           <button class="button button-secondary access-close" type="button">
-            <span class="lang-id">Close</span>
-            <span class="lang-en">Close</span>
+            <span class="lang-id">Close / Kembali</span>
+            <span class="lang-en">Close / Back</span>
           </button>
           <p class="access-error" hidden>
             <span class="lang-id">Password belum sesuai.</span>
@@ -81,6 +82,16 @@
     const input = gate.querySelector(".access-input");
     const error = gate.querySelector(".access-error");
     const closeButton = gate.querySelector(".access-close");
+    const dismissButton = gate.querySelector(".access-dismiss");
+
+    function goBackOrHome() {
+      if (window.history.length > 1) {
+        window.history.back();
+        return;
+      }
+
+      window.location.href = "index.html";
+    }
 
     form.addEventListener("submit", function (event) {
       event.preventDefault();
@@ -98,14 +109,8 @@
       input.select();
     });
 
-    closeButton.addEventListener("click", function () {
-      if (window.history.length > 1) {
-        window.history.back();
-        return;
-      }
-
-      window.location.href = "index.html";
-    });
+    closeButton.addEventListener("click", goBackOrHome);
+    dismissButton.addEventListener("click", goBackOrHome);
 
     input.focus();
   }
